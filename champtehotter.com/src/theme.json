@@ -1,0 +1,35 @@
+{
+  "token": {
+    "colorPrimary": "#9dd9f3",
+    "colorInfo": "#ffb4a0",
+    "wireframe": false,
+    "colorBgBase": "#ceeefc",
+    "colorTextBase": "#505050"
+  },
+  "components": {
+    "Divider": {
+      "colorSplit": "rgb(114, 194, 228)",
+      "lineWidth": 2,
+      "colorTextHeading": "rgb(76, 165, 204)",
+      "colorText": "rgb(60, 129, 159)"
+    },
+    "Card": {
+      "colorBgContainer": "rgb(206, 238, 252)"
+    },
+    "List": {
+      "colorPrimary": "rgb(206, 238, 252)"
+    },
+    "Button": {
+      "colorPrimary": "rgb(255, 180, 160)",
+      "colorText": "rgb(255, 120, 88)",
+      "colorPrimaryActive": "rgb(255, 120, 88)",
+      "colorPrimaryHover": "rgb(255, 147, 122)",
+      "colorPrimaryBorder": "rgb(255, 216, 207)",
+      "colorBorder": "rgb(255, 147, 122)"
+    },
+    "Menu": {
+      "itemHoverBg": "rgb(255, 216, 207)",
+      "itemHoverColor": "rgb(255, 147, 122)"
+    }
+  }
+}

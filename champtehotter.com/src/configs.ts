@@ -1,0 +1,2 @@
+
+export const CONFIG_NEW_TAGDELTADAYS = Number(process.env.REACT_APP_NEW_TAGDELTADAYS) || 30
