@@ -1,4 +1,5 @@
 import { serviceGetMedia } from 'utility/services'
+
 import { create } from 'zustand'
 
 export enum MEDIA_SECTIONS {
