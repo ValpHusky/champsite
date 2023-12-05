@@ -45,9 +45,12 @@ import Item from "antd/es/list/Item";
 import MenuItem from "antd/lib/menu/MenuItem";
 import Over18Disclaimer from "components/over18disclaimer";
 import { Title } from "components/title";
+import { Footer } from "components/footer";
+
 
 const ThemedLayout = () => (
   <ThemedLayoutV2
+    Footer={() => <Footer />}
     Header={() => <Header />}
     Sider={() => (
       <ThemedSiderV2
