@@ -43,13 +43,15 @@ import { HypnoPage } from "pages/hypno";
 import { HomePage } from "pages/home";
 import Item from "antd/es/list/Item";
 import MenuItem from "antd/lib/menu/MenuItem";
+import Over18Disclaimer from "components/over18disclaimer";
+import { Title } from "components/title";
 
 const ThemedLayout = () => (
   <ThemedLayoutV2
-    Header={() => <Header isSticky={true} />}
+    Header={() => <Header />}
     Sider={() => (
       <ThemedSiderV2
-          Title={() => <></>}
+          Title={() => <Title />}
           render={({ items, logout, collapsed }) => {
               return (
                   <>
@@ -83,84 +85,87 @@ const ThemedLayout = () => (
 
 function App() {
   return (
-    <BrowserRouter>
-      <RefineKbarProvider>
-        <ColorModeContextProvider>
-          <AntdApp>
-            <DevtoolsProvider>
-              <Refine
-                dataProvider={dataProvider(supabaseClient)}
-                liveProvider={liveProvider(supabaseClient)}
-                authProvider={authProvider}
-                routerProvider={routerBindings}
-                notificationProvider={useNotificationProvider}
-                options={{
-                  syncWithLocation: true,
-                  warnWhenUnsavedChanges: true,
-                  projectId: "7OMXxw-OhVwFE-4XOGYp",
-                  liveMode: "auto",
-                }}
-              >
-                <Routes>
-                <Route
-                    element={
-                      <ThemedLayout />
-                    }
-                  >
-                    <Route path="/stories">
-                      <Route index element={<StoriesPage />} />
-                    </Route>
-                    <Route path="/hypno">
-                      <Route index element={<HypnoPage />} />
-                    </Route>
-                    <Route path="/">
-                      <Route index element={<HomePage />} />
-                    </Route>
-                    
-                  </Route>
+    <>
+      <Over18Disclaimer />
+      <BrowserRouter>
+        <RefineKbarProvider>
+          <ColorModeContextProvider>
+            <AntdApp>
+              <DevtoolsProvider>
+                <Refine
+                  dataProvider={dataProvider(supabaseClient)}
+                  liveProvider={liveProvider(supabaseClient)}
+                  authProvider={authProvider}
+                  routerProvider={routerBindings}
+                  notificationProvider={useNotificationProvider}
+                  options={{
+                    syncWithLocation: true,
+                    warnWhenUnsavedChanges: true,
+                    projectId: "7OMXxw-OhVwFE-4XOGYp",
+                    liveMode: "auto",
+                  }}
+                >
+                  <Routes>
                   <Route
-                    path="/login"
-                    element={
-                      <Authenticated
-                      key="authenticated-outer"
-                      fallback={
-                        <AuthPage
-                        type="login"
-                        providers={[{name:"google", label:"Sign in with Google", icon: <GoogleCircleFilled /> }]}
-                        formProps={{ disabled: true }}
-                      />
+                      element={
+                        <ThemedLayout />
                       }
                     >
-                      <Navigate replace to="/admin" />
-                    </Authenticated>
-                    }
-                  />
-                  <Route path="/admin" element={
-                    <Authenticated
-                      key="authenticated-inner"
-                      fallback={<CatchAllNavigate to="/login" />}
-                    >
-                      <ThemedLayout />
-                    </Authenticated>
-                  }>
-                    <Route index element={<AdminDashboard />} />
-                    {/* <Route path="create" element={<BlogPostCreate />} />
-                    <Route path="edit/:id" element={<BlogPostEdit />} />
-                    <Route path="show/:id" element={<BlogPostShow />} /> */}
-                  </Route>
-                  <Route path="*" element={<ErrorComponent />} />
-                </Routes>
+                      <Route path="/stories">
+                        <Route index element={<StoriesPage />} />
+                      </Route>
+                      <Route path="/hypno">
+                        <Route index element={<HypnoPage />} />
+                      </Route>
+                      <Route path="/">
+                        <Route index element={<HomePage />} />
+                      </Route>
+                      
+                    </Route>
+                    <Route
+                      path="/login"
+                      element={
+                        <Authenticated
+                        key="authenticated-outer"
+                        fallback={
+                          <AuthPage
+                          type="login"
+                          providers={[{name:"google", label:"Sign in with Google", icon: <GoogleCircleFilled /> }]}
+                          formProps={{ disabled: true }}
+                        />
+                        }
+                      >
+                        <Navigate replace to="/admin" />
+                      </Authenticated>
+                      }
+                    />
+                    <Route path="/admin" element={
+                      <Authenticated
+                        key="authenticated-inner"
+                        fallback={<CatchAllNavigate to="/login" />}
+                      >
+                        <ThemedLayout />
+                      </Authenticated>
+                    }>
+                      <Route index element={<AdminDashboard />} />
+                      {/* <Route path="create" element={<BlogPostCreate />} />
+                      <Route path="edit/:id" element={<BlogPostEdit />} />
+                      <Route path="show/:id" element={<BlogPostShow />} /> */}
+                    </Route>
+                    <Route path="*" element={<ErrorComponent />} />
+                  </Routes>
 
-                <RefineKbar />
-                <UnsavedChangesNotifier />
-                <DocumentTitleHandler />
-              </Refine>
-              <DevtoolsPanel />
-            </DevtoolsProvider>
-          </AntdApp>
-        </ColorModeContextProvider>
-      </RefineKbarProvider>
-    </BrowserRouter>
+                  <RefineKbar />
+                  <UnsavedChangesNotifier />
+                  <DocumentTitleHandler />
+                </Refine>
+                <DevtoolsPanel />
+              </DevtoolsProvider>
+            </AntdApp>
+          </ColorModeContextProvider>
+        </RefineKbarProvider>
+      </BrowserRouter>
+    </>
   );
 }
 

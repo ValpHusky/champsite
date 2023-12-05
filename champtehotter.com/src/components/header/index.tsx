@@ -25,7 +25,10 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   const { data: user } = useGetIdentity<IUser>();
 
   const headerStyles: React.CSSProperties = {
-    backgroundColor: token.colorBgElevated,
+    backgroundColor: 'white',
+    backgroundImage: 'url(/assets/orlandofox_banner.png)',
+    backgroundPosition: 'center',
+    backgroundSize: 'contain',
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
