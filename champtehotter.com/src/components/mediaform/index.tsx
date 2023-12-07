@@ -3,7 +3,7 @@ import { Button, Form, Input, Select, Spin, Upload, UploadFile } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { UploadProps } from "antd/lib";
 import { mediaInsert, mediaUpload } from "utility/services";
-import { MEDIA_SECTIONS, mediaSectionsArray, useReloadMedia } from "store";
+import { mediaSectionsArray, useReloadMedia } from "store";
 
   
 const onFinishFailed = (errorInfo: any) => {
@@ -45,7 +45,7 @@ export const MediaForm: React.FC = () => {
         if (result) {
             reloadMedia()
         }
-      }, [])
+      }, [reloadMedia])
 
     return (
         <Spin spinning={uploading} tip="Uploading...">

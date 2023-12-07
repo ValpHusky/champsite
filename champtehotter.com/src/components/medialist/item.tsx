@@ -14,15 +14,15 @@ export interface MediaListItemProps {
 
 
 export const getMediaListMimeIcon = (mime: string) => {
-    if (mime.indexOf('image') != -1) {
+    if (mime.indexOf('image') !== -1) {
         return <FileImageOutlined />
-    } else if(mime.indexOf('pdf') != -1) {
+    } else if(mime.indexOf('pdf') !== -1) {
         return <FilePdfOutlined />
-    } else if(mime.indexOf('text') != -1) {
+    } else if(mime.indexOf('text') !== -1) {
         return <FileTextOutlined />
-    } else if(mime.indexOf('zip') != -1) {
+    } else if(mime.indexOf('zip') !== -1) {
         return <FileZipOutlined />
-    } else if(mime.indexOf('audio') != -1) {
+    } else if(mime.indexOf('audio') !== -1) {
         return <SoundOutlined />
     } else {
         return <FileOutlined />
