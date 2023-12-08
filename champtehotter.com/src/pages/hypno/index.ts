@@ -1,1 +1,0 @@
-export { HypnoPage } from "./list";
