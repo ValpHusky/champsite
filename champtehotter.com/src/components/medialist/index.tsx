@@ -42,7 +42,7 @@ export const MediaList: React.FC<MediaListProps> = (props) =>{
         return mediaSorted.slice((page - 1) * size, size * page)
 
         // TODO: Sort media
-    }, [page, size, mediaSorted, limit])
+    }, [page, size, mediaSorted, limit, postAgeLimit])
 
     const onPageChange = useCallback((newpage: number, newsize: number) => {
         setPage(newpage)

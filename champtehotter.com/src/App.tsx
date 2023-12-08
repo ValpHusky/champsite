@@ -1,4 +1,4 @@
-import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
+import { Authenticated, Refine } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
@@ -17,31 +17,17 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import { dataProvider, liveProvider } from "@refinedev/supabase";
-import { App as AntdApp, Menu } from "antd";
-import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "pages/blog-posts";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "pages/categories";
+import { App as AntdApp, Divider, Menu } from "antd";
 import { BrowserRouter, Link, Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { supabaseClient } from "utility";
 import authProvider from "./authProvider";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
-import { LoginPage } from "pages/login";
-import { FilePdfOutlined, GoogleCircleFilled, HomeOutlined, SettingOutlined, SoundOutlined } from "@ant-design/icons";
+import { FilePdfOutlined, GoogleCircleFilled, HomeOutlined, LinkOutlined, SettingOutlined, SoundOutlined } from "@ant-design/icons";
 import { AdminDashboard } from "pages/admin";
 import { StoriesPage } from "pages/stories";
 import { HypnoPage } from "pages/hypno";
 import { HomePage } from "pages/home";
-import Item from "antd/es/list/Item";
 import MenuItem from "antd/lib/menu/MenuItem";
 import Over18Disclaimer from "components/over18disclaimer";
 import { Title } from "components/title";
@@ -67,8 +53,32 @@ const ThemedLayout = () => (
                       <MenuItem icon={<SoundOutlined />} title="Hypno">
                         <Link to="/hypno">Hypno</Link>
                       </MenuItem>
+                      <div>
+                        <Divider>Links</Divider>
+                      </div>
+                      <MenuItem icon={<LinkOutlined />} title="Twitter">
+                        <Link target="_blank" to="https://twitter.com/ChampTehOtter">X (Twitter)</Link>
+                      </MenuItem>
+                      <MenuItem icon={<LinkOutlined />} title="Patreon">
+                        <Link target="_blank" to="https://www.patreon.com/ChampTehOtter">Patreon</Link>
+                      </MenuItem>
+                      <MenuItem icon={<LinkOutlined />} title="Ko-fi">
+                        <Link target="_blank" to="https://ko-fi.com/champtehotter">Ko-fi</Link>
+                      </MenuItem>
+                      <MenuItem icon={<LinkOutlined />} title="SubscribeStar">
+                        <Link target="_blank" to="https://subscribestar.adult/champtehotter">SubscribeStar</Link>
+                      </MenuItem>
+                      <MenuItem icon={<LinkOutlined />} title="Bluesky">
+                        <Link target="_blank" to="https://bsky.app/profile/champtehotter.bsky.social">Bluesky</Link>
+                      </MenuItem>
+                      <MenuItem icon={<LinkOutlined />} title="Furaffinity">
+                        <Link target="_blank" to="https://www.furaffinity.net/user/champtehotter">Furaffinity</Link>
+                      </MenuItem>
                       <Authenticated fallback={<></>}>
                         <Menu>
+                          <div>
+                            <Divider>Admin tools</Divider>
+                          </div>
                           <MenuItem icon={<SettingOutlined />} title="Admin">
                             <Link to="/admin">Admin</Link>
                           </MenuItem>

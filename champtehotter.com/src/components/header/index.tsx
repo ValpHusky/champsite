@@ -5,12 +5,11 @@ import {
   Avatar,
   Space,
   Typography,
-  theme,
 } from "antd";
 import React from "react";
 
 const { Text } = Typography;
-const { useToken } = theme;
+
 
 type IUser = {
   id: number;
@@ -21,7 +20,6 @@ type IUser = {
 export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   isSticky,
 }) => {
-  const { token } = useToken();
   const { data: user } = useGetIdentity<IUser>();
 
   const headerStyles: React.CSSProperties = {
@@ -44,6 +42,18 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
 
   return (
     <AntdLayout.Header style={headerStyles}>
+      <div style={{ 
+        verticalAlign: 'center', 
+        marginTop: '40px', 
+        backgroundColor: 'white', 
+        height:'12px', 
+        fontSize: '90%',
+        display: 'flex',
+        alignItems: 'center',
+        fontWeight: 'bold' 
+      }}>
+          Banner by Orlando Fox [<a href="https://twitter.com/orlando_fox" target="_blank">Twitter</a> - <a href="https://www.afoxdraws.com/" target="_blank">Website</a>]
+      </div>
       <Space>
         <Space style={{ marginLeft: "8px" }} size="middle">
           {user?.name && <Text strong>{user.name}</Text>}
