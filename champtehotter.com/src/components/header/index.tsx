@@ -52,7 +52,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
         alignItems: 'center',
         fontWeight: 'bold' 
       }}>
-          Banner by Orlando Fox [<a href="https://twitter.com/orlando_fox" target="_blank">Twitter</a> - <a href="https://www.afoxdraws.com/" target="_blank">Website</a>]
+          Banner by Orlando Fox [<a rel="noreferrer" href="https://twitter.com/orlando_fox" target="_blank">Twitter</a> - <a rel="noreferrer" href="https://www.afoxdraws.com/" target="_blank">Website</a>]
       </div>
       <Space>
         <Space style={{ marginLeft: "8px" }} size="middle">
