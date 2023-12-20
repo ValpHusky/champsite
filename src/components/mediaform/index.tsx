@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { Button, Form, Input, Select, Spin, Upload, UploadFile } from "antd";
+import { Button, DatePicker, Form, Input, Select, Spin, Upload, UploadFile } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { UploadProps } from "antd/lib";
 import { mediaInsert, mediaUpload } from "utility/services";
@@ -17,13 +17,13 @@ export const MediaForm: React.FC = () => {
     const reloadMedia = useReloadMedia()
 
     const uploadprops: UploadProps = useMemo(() => ({
-        onRemove: (file) => {
+        onRemove: (file: any) => {
           const index = fileList.indexOf(file);
           const newFileList = fileList.slice();
           newFileList.splice(index, 1);
           setFileList(newFileList);
         },
-        beforeUpload: (file) => {
+        beforeUpload: (file: any) => {
           setFileList([file]);
     
           return false;
@@ -81,6 +81,17 @@ export const MediaForm: React.FC = () => {
                     ]}
                 >
                     <Input.TextArea />
+                </Form.Item>
+                <Form.Item
+                    label="Publish date"
+                    name="Set a publish date (optional: Default today)"
+                    rules={[
+                        {
+                            required: false,
+                        },
+                    ]}
+                >
+                    <DatePicker name="published_at" />
                 </Form.Item>
                 <Form.Item
                     label="Section"
