@@ -5,12 +5,14 @@
   "homepage": "https://valphusky.github.io/champsite",
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
+    "@mui/material": "^5.14.20",
     "@refinedev/antd": "^5.7.0",
     "@refinedev/cli": "^2.7.4",
     "@refinedev/core": "^4.28.2",
     "@refinedev/devtools": "^1.1.6",
     "@refinedev/inferencer": "^4.3.2",
     "@refinedev/kbar": "^1.1.2",
+    "@refinedev/mui": "^5.14.0",
     "@refinedev/react-router-v6": "^4.1.0",
     "@refinedev/supabase": "^5.0.0",
     "antd": "^5.0.5",
@@ -35,6 +37,8 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "refine dev",
     "build": "refine build",
     "test": "react-scripts test",

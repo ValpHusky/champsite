@@ -4,23 +4,28 @@
     "colorInfo": "#ffb4a0",
     "wireframe": false,
     "colorBgBase": "#ceeefc",
-    "colorTextBase": "#505050"
+    "colorTextBase": "#505050",
+    "fontFamily": "Bubblegum Sans",
+    "fontSize": 16
   },
   "components": {
+    "Layout": {
+      "siderBg": "#fffffff",
+      "lightSiderBg": "#ffffff",
+      "headerHeight": 80
+    },
+    "Sider": {
+      "headerHeight": 80
+    },
     "Divider": {
-      "colorSplit": "rgb(114, 194, 228)",
+      "colorSplit": "#FFB4A0",
       "lineWidth": 2,
-      "colorTextHeading": "rgb(76, 165, 204)",
-      "colorText": "rgb(60, 129, 159)"
-    },
-    "Card": {
-      "colorBgContainer": "rgb(206, 238, 252)"
-    },
-    "List": {
-      "colorPrimary": "rgb(206, 238, 252)"
+      "colorTextHeading": "#4CA5CC",
+      "colorText": "rgb(60, 129, 159)",
+      "fontSizeLG": 20
     },
     "Button": {
-      "colorPrimary": "rgb(255, 180, 160)",
+      "colorPrimary": "#FF8B70",
       "colorText": "rgb(255, 120, 88)",
       "colorPrimaryActive": "rgb(255, 120, 88)",
       "colorPrimaryHover": "rgb(255, 147, 122)",

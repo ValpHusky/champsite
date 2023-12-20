@@ -63,3 +63,17 @@ export const mediaUpload = async (file: File, section: MEDIA_SECTIONS): Promise<
 
     return { ...meta, url: data?.path }
 }
+
+export const updateViews = async () => {
+    const result = await supabaseClient.rpc("update_views")
+    console.log(result)
+}
+
+export const getViews = async (): Promise<number|null> => {
+    const { data, error } = await supabaseClient.from('views').select()
+    if (error) {
+        console.log('Error on data', error)
+        return null
+    }
+    return data[0].view_count
+}

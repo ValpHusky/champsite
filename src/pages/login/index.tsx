@@ -35,6 +35,7 @@ export const LoginPage: React.FC = () => {
 
             try {
                 window.google.accounts.id.initialize({
+                    // redirect_uri: 'https://valphusky.github.io/champsite',
                     ux_mode: "popup",
                     client_id: GOOGLE_CLIENT_ID,
                     callback: async (res: CredentialResponse) => {

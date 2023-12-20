@@ -18,7 +18,7 @@ import routerBindings, {
 } from "@refinedev/react-router-v6";
 import { dataProvider, liveProvider } from "@refinedev/supabase";
 import { App as AntdApp, Divider, Menu } from "antd";
-import { BrowserRouter, Link, Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { HashRouter, Link, Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { supabaseClient } from "utility";
 import authProvider from "./authProvider";
 import { Header } from "./components/header";
@@ -32,6 +32,7 @@ import MenuItem from "antd/lib/menu/MenuItem";
 import Over18Disclaimer from "components/over18disclaimer";
 import { Title } from "components/title";
 import { Footer } from "components/footer";
+
 
 
 const ThemedLayout = () => (
@@ -58,9 +59,6 @@ const ThemedLayout = () => (
                       </div>
                       <MenuItem icon={<LinkOutlined />} title="Twitter">
                         <Link target="_blank" to="https://twitter.com/ChampTehOtter">X (Twitter)</Link>
-                      </MenuItem>
-                      <MenuItem icon={<LinkOutlined />} title="Patreon">
-                        <Link target="_blank" to="https://www.patreon.com/ChampTehOtter">Patreon</Link>
                       </MenuItem>
                       <MenuItem icon={<LinkOutlined />} title="Ko-fi">
                         <Link target="_blank" to="https://ko-fi.com/champtehotter">Ko-fi</Link>
@@ -99,85 +97,87 @@ const ThemedLayout = () => (
 function App() {
   return (
     <>
-      <Over18Disclaimer />
-      <BrowserRouter>
-        <RefineKbarProvider>
-          <ColorModeContextProvider>
-            <AntdApp>
-              <DevtoolsProvider>
-                <Refine
-                  dataProvider={dataProvider(supabaseClient)}
-                  liveProvider={liveProvider(supabaseClient)}
-                  authProvider={authProvider}
-                  routerProvider={routerBindings}
-                  notificationProvider={useNotificationProvider}
-                  options={{
-                    syncWithLocation: true,
-                    warnWhenUnsavedChanges: true,
-                    projectId: "7OMXxw-OhVwFE-4XOGYp",
-                    liveMode: "auto",
-                  }}
-                >
-                  <Routes>
-                  <Route
-                      element={
-                        <ThemedLayout />
-                      }
+    {/* <ThemeContextProvider> */}
+        <Over18Disclaimer />
+        <HashRouter>
+          <RefineKbarProvider>
+              <ColorModeContextProvider>
+                <AntdApp>
+                  <DevtoolsProvider>
+                    <Refine
+                      dataProvider={dataProvider(supabaseClient)}
+                      liveProvider={liveProvider(supabaseClient)}
+                      authProvider={authProvider}
+                      routerProvider={routerBindings}
+                      notificationProvider={useNotificationProvider}
+                      options={{
+                        syncWithLocation: true,
+                        warnWhenUnsavedChanges: true,
+                        projectId: "7OMXxw-OhVwFE-4XOGYp",
+                        liveMode: "auto",
+                      }}
                     >
-                      <Route path="/stories">
-                        <Route index element={<StoriesPage />} />
-                      </Route>
-                      <Route path="/hypno">
-                        <Route index element={<HypnoPage />} />
-                      </Route>
-                      <Route path="/">
-                        <Route index element={<HomePage />} />
-                      </Route>
-                      
-                    </Route>
-                    <Route
-                      path="/login"
-                      element={
-                        <Authenticated
-                        key="authenticated-outer"
-                        fallback={
-                          <AuthPage
-                          type="login"
-                          providers={[{name:"google", label:"Sign in with Google", icon: <GoogleCircleFilled /> }]}
-                          formProps={{ disabled: true }}
+                      <Routes>
+                      <Route
+                          element={
+                            <ThemedLayout />
+                          }
+                        >
+                          <Route path="/stories">
+                            <Route index element={<StoriesPage />} />
+                          </Route>
+                          <Route path="/hypno">
+                            <Route index element={<HypnoPage />} />
+                          </Route>
+                          <Route path="/">
+                            <Route index element={<HomePage />} />
+                          </Route>
+                          
+                        </Route>
+                        <Route
+                          path="/login"
+                          element={
+                            <Authenticated
+                            key="authenticated-outer"
+                            fallback={
+                              <AuthPage
+                              type="login"
+                              providers={[{name:"google", label:"Sign in with Google", icon: <GoogleCircleFilled /> }]}
+                              formProps={{ disabled: true }}
+                            />
+                            }
+                          >
+                            <Navigate replace to="/admin" />
+                          </Authenticated>
+                          }
                         />
-                        }
-                      >
-                        <Navigate replace to="/admin" />
-                      </Authenticated>
-                      }
-                    />
-                    <Route path="/admin" element={
-                      <Authenticated
-                        key="authenticated-inner"
-                        fallback={<CatchAllNavigate to="/login" />}
-                      >
-                        <ThemedLayout />
-                      </Authenticated>
-                    }>
-                      <Route index element={<AdminDashboard />} />
-                      {/* <Route path="create" element={<BlogPostCreate />} />
-                      <Route path="edit/:id" element={<BlogPostEdit />} />
-                      <Route path="show/:id" element={<BlogPostShow />} /> */}
-                    </Route>
-                    <Route path="*" element={<ErrorComponent />} />
-                  </Routes>
+                        <Route path="/admin" element={
+                          <Authenticated
+                            key="authenticated-inner"
+                            fallback={<CatchAllNavigate to="/login" />}
+                          >
+                            <ThemedLayout />
+                          </Authenticated>
+                        }>
+                          <Route index element={<AdminDashboard />} />
+                          {/* <Route path="create" element={<BlogPostCreate />} />
+                          <Route path="edit/:id" element={<BlogPostEdit />} />
+                          <Route path="show/:id" element={<BlogPostShow />} /> */}
+                        </Route>
+                        <Route path="*" element={<ErrorComponent />} />
+                      </Routes>
 
-                  <RefineKbar />
-                  <UnsavedChangesNotifier />
-                  <DocumentTitleHandler />
-                </Refine>
-                <DevtoolsPanel />
-              </DevtoolsProvider>
-            </AntdApp>
-          </ColorModeContextProvider>
-        </RefineKbarProvider>
-      </BrowserRouter>
+                      <RefineKbar />
+                      <UnsavedChangesNotifier />
+                      <DocumentTitleHandler />
+                    </Refine>
+                    <DevtoolsPanel />
+                  </DevtoolsProvider>
+                </AntdApp>
+              </ColorModeContextProvider>
+          </RefineKbarProvider>
+        </HashRouter>
+      {/* </ThemeContextProvider> */}
     </>
   );
 }

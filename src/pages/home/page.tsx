@@ -39,9 +39,6 @@ export const HomePage: React.FC<IResourceComponentsProps> = () => {
                 <Button style={{ flex: '1', margin: '0px 10px' }} target="_blank" href="https://ko-fi.com/champtehotter" type="primary" icon={<LinkOutlined />}>
                   Ko-fi
                 </Button>
-                <Button style={{ flex: '1', margin: '0px 10px' }} target="_blank" href="https://www.patreon.com/ChampTehOtter" type="primary" icon={<LinkOutlined />}>
-                  Patreon
-                </Button>
                 <Button style={{ flex: '1', margin: '0px 10px' }} target="_blank" href="https://subscribestar.adult/champtehotter" type="primary" icon={<LinkOutlined />}>
                   Subscribestar
                 </Button>

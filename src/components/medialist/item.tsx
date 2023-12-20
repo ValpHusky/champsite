@@ -54,7 +54,7 @@ export const MediaListItem: React.FC<MediaListItemProps> = (props) => {
                     <Flex align="center">
                         {isnew &&
                             <>  
-                                 <Typography.Text type="danger" style={{ fontWeight: 'bolder', fontSize: 9 }}>[new]</Typography.Text>
+                                 <Typography.Text type="danger" style={{ fontWeight: 'bolder', fontSize: 11 }}>[new]</Typography.Text>
                                 &nbsp;
                             </>
                         }
@@ -64,7 +64,7 @@ export const MediaListItem: React.FC<MediaListItemProps> = (props) => {
                         </Typography.Text>
                     </Flex>
                     {item.description &&
-                        <Typography.Text style={{ fontSize: 11 }}>
+                        <Typography.Text style={{ fontSize: 14 }}>
                             {item.description}
                         </Typography.Text>
                     }
@@ -75,13 +75,13 @@ export const MediaListItem: React.FC<MediaListItemProps> = (props) => {
                     md={{ span: 4 }}
                     style={{ textAlign:'right' }}
                 >
-                    <Typography.Text type="secondary" style={{ fontSize: 10 }}>{date}</Typography.Text>
+                    <Typography.Text type="secondary" style={{ fontSize: 14 }}>{date}</Typography.Text>
                 </Col>
                 <Col
                     xs={{ span: 24 }} 
                     sm={{ span: 4 }} 
                     md={{ span: 4 }}
-                    style={{ textAlign:'right' }}
+                    style={{ textAlign:'right', fontSize: 18 }}
                 >
                     <Button type="text" onClick={() => serviceDownloadMedia(item.url)} icon={<DownloadOutlined />}></Button>
                     <Authenticated fallback={<></>}>
