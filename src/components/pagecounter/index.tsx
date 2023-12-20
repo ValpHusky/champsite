@@ -1,20 +1,36 @@
 import RetroHitCounter from 'react-retro-hit-counter';
-import countapi from 'countapi-js';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { updateViews } from 'utility/services';
+import { useGetViews, useViews } from 'store';
+
+function isNewVisit() {
+    const current = Boolean(sessionStorage.getItem('session'));
+    let newvisit = false
+  
+    if (!current) {
+      newvisit = true
+    }
+  
+    sessionStorage.setItem('session', '1');
+  
+    return newvisit;
+  }
 
 export default function PageCounter() {
 
-    const [visits, setVisits] = useState(0)
+    const getViews = useGetViews()
+    const views = useViews()
 
     useEffect(() => {
-        countapi.visits().then((result) => {
-            setVisits(result.value);
-        });
-    }, [])
+        if (isNewVisit()) {
+            updateViews()
+        }
+        getViews()
+    }, [getViews])
 
     return (
         <RetroHitCounter
-            hits={visits}
+            hits={views}
             /* The following are all default values: */
             withBorder={true}
             withGlow={false}
