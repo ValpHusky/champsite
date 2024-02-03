@@ -59,7 +59,7 @@ export const MediaListItem: React.FC<MediaListItemProps> = (props) => {
                             </>
                         }
                         {getMediaListMimeIcon(item.mime)}
-                        <Typography.Text ellipsis style={{ fontWeight: 'bold' }}>
+                        <Typography.Text style={{ fontWeight: 'bold' }}>
                             {item.title}
                         </Typography.Text>
                     </Flex>
