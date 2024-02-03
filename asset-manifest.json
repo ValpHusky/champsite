@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/champsite/static/css/main.dd1ea7b7.css",
-    "main.js": "/champsite/static/js/main.8326269c.js",
+    "main.js": "/champsite/static/js/main.eea3b9fa.js",
     "static/js/787.a3b45d4f.chunk.js": "/champsite/static/js/787.a3b45d4f.chunk.js",
     "index.html": "/champsite/index.html",
     "main.dd1ea7b7.css.map": "/champsite/static/css/main.dd1ea7b7.css.map",
-    "main.8326269c.js.map": "/champsite/static/js/main.8326269c.js.map",
+    "main.eea3b9fa.js.map": "/champsite/static/js/main.eea3b9fa.js.map",
     "787.a3b45d4f.chunk.js.map": "/champsite/static/js/787.a3b45d4f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dd1ea7b7.css",
-    "static/js/main.8326269c.js"
+    "static/js/main.eea3b9fa.js"
   ]
 }
