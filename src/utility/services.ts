@@ -1,8 +1,17 @@
-import { ChampMedia, MEDIA_SECTIONS } from 'store';
+import { ChampMedia, ChampNews, MEDIA_SECTIONS } from 'store';
 import { supabaseClient } from 'utility';
 
 export const serviceGetMedia = async (): Promise<ChampMedia[]|null> => {
     const { data, error } = await supabaseClient.from('media').select()
+    if (error) {
+        console.log('Error on data', error)
+        return null
+    }
+    return data
+}
+
+export const serviceGetNews = async (): Promise<ChampNews[]|null> => {
+    const { data, error } = await supabaseClient.from('news').select()
     if (error) {
         console.log('Error on data', error)
         return null
@@ -28,11 +37,28 @@ export const serviceDeleteMedia = async (item: ChampMedia) => {
     }
     console.error(error)
 }
+export const serviceDeleteNews = async (item: ChampNews) => {
+    const { error } = await supabaseClient.from('news').delete().eq('id', item.id)
+    if (error) {
+        console.error(error)
+    }
+}
 
 export const mediaInsert = async (media: any) => {
     const { error } = await supabaseClient
         .from('media')
         .insert(media)
+    if (error) {
+        console.log('Error Inserting', error)
+        return false
+    }
+    return true
+}
+
+export const newsInsert = async (news: any) => {
+    const { error } = await supabaseClient
+        .from('news')
+        .insert(news)
     if (error) {
         console.log('Error Inserting', error)
         return false

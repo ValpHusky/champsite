@@ -3,6 +3,7 @@ import { IResourceComponentsProps } from "@refinedev/core";
 import { Button, Col, Divider, Row, Typography } from "antd";
 import Title from "antd/es/typography/Title";
 import { MediaList } from "components";
+import { NewsList } from "components/newlist";
 import PageCounter from "components/pagecounter";
 import { CONFIG_NEW_TAGDELTADAYS } from "configs";
 import { MEDIA_SECTIONS } from "store";
@@ -13,8 +14,8 @@ export const HomePage: React.FC<IResourceComponentsProps> = () => {
       <Row>
           <Col 
               xs={{ span: 22, offset: 1 }} 
-              sm={{ span: 20, offset: 2 }} 
-              md={{ span: 12, offset: 6 }} 
+              sm={{ span: 18, offset: 3}}
+              // md={{ span: 12, offset: 6 }} 
               // lg={{ span: 8, offset: 8}} 
               // xl={{ span: 4, offset: 10 }}
               style={{ textAlign: 'center' }}
@@ -28,8 +29,8 @@ export const HomePage: React.FC<IResourceComponentsProps> = () => {
       <Row>
           <Col 
               xs={{ span: 22, offset: 1 }} 
-              sm={{ span: 20, offset: 2 }} 
-              md={{ span: 12, offset: 6 }} 
+              sm={{ span: 18, offset: 3}} 
+              // md={{ span: 12, offset: 6 }} 
               // lg={{ span: 8, offset: 8}} 
               // xl={{ span: 4, offset: 10 }}
               style={{ padding: '20px 0px 60px 0' }}
@@ -51,8 +52,8 @@ export const HomePage: React.FC<IResourceComponentsProps> = () => {
       <Row>
           <Col 
               xs={{ span:22, offset: 1 }} 
-              sm={{ span: 20, offset: 2}} 
-              md={{ span: 12, offset: 6}} 
+              sm={{ span: 18, offset: 3}} 
+              // md={{ span: 12, offset: 6}} 
               // lg={{ span: 8, offset: 8}} 
               // xl={{ span: 4, offset: 10 }}
           >
@@ -66,8 +67,8 @@ export const HomePage: React.FC<IResourceComponentsProps> = () => {
       <Row>
           <Col 
               xs={{ span:22, offset: 1 }} 
-              sm={{ span: 20, offset: 2}} 
-              md={{ span: 12, offset: 6}} 
+              sm={{ span: 18, offset: 3}} 
+              // md={{ span: 12, offset: 6}} 
               // lg={{ span: 8, offset: 8}} 
               // xl={{ span: 4, offset: 10 }}
           >
@@ -78,11 +79,25 @@ export const HomePage: React.FC<IResourceComponentsProps> = () => {
               />
           </Col>
       </Row>
+      <Row>
+          <Col 
+              xs={{ span:22, offset: 1 }} 
+              sm={{ span: 18, offset: 3}} 
+              // md={{ span: 12, offset: 6}} 
+              // lg={{ span: 8, offset: 8}} 
+              // xl={{ span: 4, offset: 10 }}
+          >
+              <NewsList 
+                postAgeLimit={CONFIG_NEW_TAGDELTADAYS} 
+                title="News" 
+              />
+          </Col>
+      </Row>
       <Row style={{ padding: '60px 0px' }}>
           <Col 
               xs={{ span: 22, offset: 1 }} 
-              sm={{ span: 20, offset: 2 }} 
-              md={{ span: 12, offset: 6 }} 
+              sm={{ span: 18, offset: 3}}  
+              // md={{ span: 12, offset: 6 }} 
               // lg={{ span: 8, offset: 8}} 
               // xl={{ span: 4, offset: 10 }}
           >

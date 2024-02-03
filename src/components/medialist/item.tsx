@@ -34,8 +34,8 @@ export const MediaListItem: React.FC<MediaListItemProps> = (props) => {
     const { item } = props
     const reloadMedia = useReloadMedia()
     
-    const date = useMemo(() => (new Date(item.created_at)).toLocaleDateString('en-US'), [item.created_at])
-    const isnew = useMemo(() => diffDays(new Date(item.created_at), new Date()) < CONFIG_NEW_TAGDELTADAYS, [item])
+    const date = useMemo(() => (new Date(item.published_at)).toLocaleDateString('en-US'), [item.published_at])
+    const isnew = useMemo(() => diffDays(new Date(item.published_at), new Date()) < CONFIG_NEW_TAGDELTADAYS, [item])
 
 
     const deleteMedia = useCallback((item: ChampMedia) => async () => {

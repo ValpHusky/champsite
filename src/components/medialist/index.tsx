@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Divider, List, Pagination } from 'antd';
+import { Divider, List } from 'antd';
 import { MEDIA_SECTIONS, useMediaBySection, useReloadMedia } from 'store';
 import { MediaListItem } from './item';
 import { diffDays } from 'utility/utils';
+import { HelpTools } from 'components/helptools';
 
 export interface MediaListProps {
     section: MEDIA_SECTIONS
@@ -14,10 +15,12 @@ export interface MediaListProps {
 
 
 
+
 export const MediaList: React.FC<MediaListProps> = (props) =>{
     const { limit, pageSize, postAgeLimit } = props
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(pageSize || 10)
+    const [sortKey, setSortKey] = useState("1")
     const media = useMediaBySection(props.section)
     const reloadMedia = useReloadMedia()
 
@@ -26,7 +29,13 @@ export const MediaList: React.FC<MediaListProps> = (props) =>{
     }, [limit, postAgeLimit])
 
     const mediaSorted = useMemo(() => {
-        return media.sort((i1, i2)=> (new Date(i1.created_at) < (new Date(i2.created_at)) ? 1 : -1))
+        if (sortKey === '1') {
+            return media.sort((i1, i2)=> i1.title < i2.title ? 1 : -1)
+        } else if (sortKey === '2') {
+            return media.sort((i1, i2)=> (new Date(i1.published_at) < (new Date(i2.published_at)) ? 1 : -1))
+        }
+        return media
+        
     }, [media])
 
     const mediaSized = useMemo(() => {
@@ -35,7 +44,7 @@ export const MediaList: React.FC<MediaListProps> = (props) =>{
         } else if (postAgeLimit) {
             
             return mediaSorted.filter(i =>{
-                const age = diffDays(new Date(i.created_at), new Date())
+                const age = diffDays(new Date(i.published_at), new Date())
                 return age < postAgeLimit
             })
         }
@@ -49,6 +58,10 @@ export const MediaList: React.FC<MediaListProps> = (props) =>{
         setSize(newsize)
     }, [])
 
+    const onSortClick = useCallback((e: any) => {
+        setSortKey(e.key)
+    }, [])
+
     useEffect(() => {
         reloadMedia()
     }, [reloadMedia])
@@ -57,8 +70,8 @@ export const MediaList: React.FC<MediaListProps> = (props) =>{
         <>
             <Divider style={{ textTransform: 'capitalize' }} orientation="left">{props.title||props.section}</Divider>
             <List
-            header={!fixedSize ? <Pagination showSizeChanger current={page} pageSize={size} responsive onChange={onPageChange} total={media.length} /> : <></>}
-            footer={!fixedSize ? <Pagination showSizeChanger current={page} pageSize={size} responsive onChange={onPageChange} total={media.length} /> : <></>}
+            header={<HelpTools onSortClick={onSortClick} sortKey={sortKey} fixedSize={fixedSize} page={page} size={size} onPageChange={onPageChange} length={mediaSized.length} />}
+            footer={<HelpTools onSortClick={onSortClick} sortKey={sortKey} fixedSize={fixedSize} page={page} size={size} onPageChange={onPageChange} length={mediaSized.length} />}
             bordered
             dataSource={mediaSized}
             renderItem={(item) => <MediaListItem key={`list_${item.section}_${item.id}`} item={item} />}

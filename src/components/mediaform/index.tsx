@@ -83,15 +83,15 @@ export const MediaForm: React.FC = () => {
                     <Input.TextArea />
                 </Form.Item>
                 <Form.Item
-                    label="Publish date"
-                    name="Set a publish date (optional: Default today)"
+                    label="Publish date (optional)"
+                    name="published_at"
                     rules={[
                         {
                             required: false,
                         },
                     ]}
                 >
-                    <DatePicker name="published_at" />
+                    <DatePicker name="published_at" placeholder="Today" />
                 </Form.Item>
                 <Form.Item
                     label="Section"

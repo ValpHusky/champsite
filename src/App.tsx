@@ -24,7 +24,7 @@ import authProvider from "./authProvider";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { FilePdfOutlined, GoogleCircleFilled, HomeOutlined, LinkOutlined, SettingOutlined, SoundOutlined } from "@ant-design/icons";
-import { AdminDashboard } from "pages/admin";
+import { AdminDashboard, NewsDashboard } from "pages/admin";
 import { StoriesPage } from "pages/stories";
 import { HypnoPage } from "pages/hypno";
 import { HomePage } from "pages/home";
@@ -77,8 +77,11 @@ const ThemedLayout = () => (
                           <div>
                             <Divider>Admin tools</Divider>
                           </div>
-                          <MenuItem icon={<SettingOutlined />} title="Admin">
-                            <Link to="/admin">Admin</Link>
+                          <MenuItem icon={<SettingOutlined />} title="Media">
+                            <Link to="/admin/media">Media</Link>
+                          </MenuItem>
+                          <MenuItem icon={<SettingOutlined />} title="News">
+                            <Link to="/admin/news">News</Link>
                           </MenuItem>
                           {logout}
                         </Menu>
@@ -159,7 +162,8 @@ function App() {
                             <ThemedLayout />
                           </Authenticated>
                         }>
-                          <Route index element={<AdminDashboard />} />
+                          <Route path="news" element={<NewsDashboard />} />
+                          <Route path="admin" element={<AdminDashboard />} />
                           {/* <Route path="create" element={<BlogPostCreate />} />
                           <Route path="edit/:id" element={<BlogPostEdit />} />
                           <Route path="show/:id" element={<BlogPostShow />} /> */}
