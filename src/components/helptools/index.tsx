@@ -14,15 +14,20 @@ export interface HelpToolsProps {
 
 const items = [
     {
-      label: 'Sort alphabetically',
+      label: 'Sort alphabetically (A-Z)',
       key: '1',
       icon: <FontColorsOutlined />,
     },
     {
-      label: 'Sort by date',
+      label: 'Sort alphabetically (Z-A',
       key: '2',
       icon: <CalendarOutlined />,
-    }
+    },
+    {
+        label: 'Sort by date',
+        key: '3',
+        icon: <CalendarOutlined />,
+      }
 ];
 
 

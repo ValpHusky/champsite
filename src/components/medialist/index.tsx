@@ -30,8 +30,10 @@ export const MediaList: React.FC<MediaListProps> = (props) =>{
 
     const mediaSorted = useMemo(() => {
         if (sortKey === '1') {
-            return media.sort((i1, i2)=> i1.title < i2.title ? 1 : -1)
+            return media.sort((i1, i2)=> i1.title > i2.title ? 1 : -1)
         } else if (sortKey === '2') {
+            return media.sort((i1, i2)=> i1.title < i2.title ? 1 : -1)
+        } else if (sortKey === '3') {
             return media.sort((i1, i2)=> (new Date(i1.published_at) < (new Date(i2.published_at)) ? 1 : -1))
         }
         return media

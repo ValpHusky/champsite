@@ -163,7 +163,7 @@ function App() {
                           </Authenticated>
                         }>
                           <Route path="news" element={<NewsDashboard />} />
-                          <Route path="admin" element={<AdminDashboard />} />
+                          <Route path="media" element={<AdminDashboard />} />
                           {/* <Route path="create" element={<BlogPostCreate />} />
                           <Route path="edit/:id" element={<BlogPostEdit />} />
                           <Route path="show/:id" element={<BlogPostShow />} /> */}

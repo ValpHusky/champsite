@@ -21,7 +21,7 @@ export const serviceGetNews = async (): Promise<ChampNews[]|null> => {
 
 export const serviceDownloadMedia = (url: string) => {
     const { data } = supabaseClient.storage.from('media').getPublicUrl(url, {
-        download: true,
+        download: false,
     })
     window.open(data.publicUrl)
 }

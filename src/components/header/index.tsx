@@ -26,7 +26,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
     backgroundColor: 'white',
     backgroundImage: `url(${process.env.REACT_APP_PUBLIC_URL}/assets/orlandofox_banner.png)`,
     backgroundPosition: 'center',
-    backgroundSize: 'contain',
+    backgroundSize: 'cover',
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
